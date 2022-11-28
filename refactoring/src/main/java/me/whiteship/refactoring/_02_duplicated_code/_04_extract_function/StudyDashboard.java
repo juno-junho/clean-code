@@ -21,6 +21,7 @@ public class StudyDashboard {
         print(participants);
     }
 
+    // 한줄 extract해도 괜찮음
     private static void print(Set<String> participants) {
         participants.forEach(System.out::println);
     }
