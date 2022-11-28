@@ -62,15 +62,34 @@ public class StudyDashboard {
     }
 
     private Participant findParticipant(String username, List<Participant> participants) {
-        Participant participant;
-        if (participants.stream().noneMatch(p -> p.username().equals(username))) {
-            participant = new Participant(username);
-            participants.add(participant);
-        } else {
-            participant = participants.stream().filter(p -> p.username().equals(username)).findFirst().orElseThrow();
-        }
+    // 매개변수 별도의 클래스로 분리해 낼 수 있다.
+        return isNewParticipant(username, participants) ?
+                createNewParticipant(username, participants) :
+                findExistingParticipant(username, participants);
+//        Participant participant;
+//        if (isNewParticipant(username, participants)) {
+//            participant = createNewParticipant(username, participants);
+//        } else {
+//            participant = findExistingParticipant(username, participants);
+//        }
+//        return participant;
+    }
 
+    private static Participant findExistingParticipant(String username, List<Participant> participants) {
+        Participant participant;
+        participant = participants.stream().filter(p -> p.username().equals(username)).findFirst().orElseThrow();
         return participant;
+    }
+
+    private static Participant createNewParticipant(String username, List<Participant> participants) {
+        Participant participant;
+        participant = new Participant(username);
+        participants.add(participant);
+        return participant;
+    }
+
+    private static boolean isNewParticipant(String username, List<Participant> participants) {
+        return participants.stream().noneMatch(p -> p.username().equals(username));
     }
 
 }
