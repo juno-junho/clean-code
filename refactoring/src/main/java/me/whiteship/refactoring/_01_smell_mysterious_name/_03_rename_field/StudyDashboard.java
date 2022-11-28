@@ -27,7 +27,7 @@ public class StudyDashboard {
 
         List<GHIssueComment> reviews = issue.getComments();
         for (GHIssueComment review : reviews) {
-            usernames.add(review.getUserName());
+            usernames.add(review.getUser().getLogin());
             this.reviews.add(review.getBody());
         }
     }
