@@ -31,6 +31,10 @@ public class StudyDashboard {
         GHIssue issue = repository.getIssue(30);
 
         // Get reviewers
+        // 보통 변수를 상단에 모두 정의할때도 있고 변수가 사용되기 직전에 선언되어 있을 수도 있음.
+        // 하지만 변수가 사용되기 직전에 선언되어 있는것을 선호함. 그래야 한 단위로, 블럭으로 볼 수 있다.(장기적으로 더 편리함)
+        // 함수 추출하는 단위가 될 수 있기 때문에. 또 위에 선언하면 복잡해진다.
+
         Set<String> reviewers = new HashSet<>();
         issue.getComments().forEach(c -> reviewers.add(c.getUserName()));
 
