@@ -11,11 +11,15 @@ class CriminalTest {
     @Test
     void alertForMiscreant() {
         Criminal criminal = new Criminal();
-        String found = criminal.alertForMiscreant(List.of(new Person("Keesun"), new Person("Don")));
+        String found = criminal.findMiscreant(List.of(new Person("Keesun"), new Person("D0on")));
         assertEquals("Don", found);
 
-        found = criminal.alertForMiscreant(List.of(new Person("John"), new Person("Don")));
+        found = criminal.findMiscreant(List.of(new Person("John"), new Person("Don")));
         assertEquals("John", found);
+
+        // modifier와 query가 섞여 있으면 test하기 어렵다. 어디서 set off alarm이 울렸는지 모름
+        found = criminal.findMiscreant(List.of(new Person("Junho"), new Person("Hwang")));
+        assertEquals("", found);
     }
 
 }
