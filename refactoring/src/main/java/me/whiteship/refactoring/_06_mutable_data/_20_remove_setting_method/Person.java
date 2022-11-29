@@ -4,7 +4,12 @@ public class Person {
 
     private String name;
 
+    // 변경 될 일이 없기에 setter가 필요 없음. 변경되길 원하지 않음 -> 생성자 통해 넘김
     private int id;
+
+    public Person(int id) {
+        this.id = id;
+    }
 
     public String getName() {
         return name;
@@ -18,7 +23,7 @@ public class Person {
         return id;
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
+//    public void setId(int id) {
+//        this.id = id;
+//    }
 }
