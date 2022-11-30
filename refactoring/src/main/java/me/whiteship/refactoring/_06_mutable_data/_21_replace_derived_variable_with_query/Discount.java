@@ -2,7 +2,9 @@ package me.whiteship.refactoring._06_mutable_data._21_replace_derived_variable_w
 
 public class Discount {
 
-    private double discountedTotal;
+    // derived variable
+    // 기존의 discount, baseTotal 두 데이터로 부터 파생된 변수
+//    private double discountedTotal;
     private double discount;
 
     private double baseTotal;
@@ -12,11 +14,13 @@ public class Discount {
     }
 
     public double getDiscountedTotal() {
-        return this.discountedTotal;
+//        assert this.discountedTotal == this.baseTotal - this.discount; //검증 절차
+//        return this.discountedTotal;
+        return this.baseTotal - this.discount;
     }
 
     public void setDiscount(double number) {
         this.discount = number;
-        this.discountedTotal = this.baseTotal - this.discount;
+//        this.discountedTotal = this.baseTotal - this.discount;
     }
 }
